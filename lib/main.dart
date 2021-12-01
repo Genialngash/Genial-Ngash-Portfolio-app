@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
 
 void main() {
   runApp(const MyApp());
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           delegate: SliverChildListDelegate(
             [
               NeumorphicButton(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 onPressed: () {
                   print("onClick");
                 },
@@ -96,56 +97,88 @@ class _MyHomePageState extends State<MyHomePage> {
                   intensity: 0.5,
                   depth: 3,
                   shape: NeumorphicShape.concave,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.only(
-                      bottomRight: Radius.circular(10),
-                      topLeft: Radius.circular(10))),
+                  boxShape: NeumorphicBoxShape.roundRect(
+                      const BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                          topLeft: Radius.circular(20))),
                 ),
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  height: 150,
+                  height: screenHeight * 0.42,
                   width: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        height: 140,
-                        child: Text(
-                          'I',
-                          style: TextStyle(fontSize: 108),
-                        ),
-                      ),
+                      // Container(
+                      //   height: 140,
+                      //   child: const Text(
+                      //     'I',
+                      //     style: TextStyle(fontSize: 108),
+                      //   ),
+                      // ),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          AnimatedTextKit(
-                            animatedTexts: [
-                              WavyAnimatedText('Hello World !!',
-                                  textStyle: TextStyle(
-                                    fontSize: 18,
-                                  )),
-                              WavyAnimatedText("I'm Danche Ng'ang'a"),
-                            ],
-                            isRepeatingAnimation: false,
-                            onTap: () {
-                              print("Tap Event");
-                            },
+                          DefaultTextStyle(
+                            style: const TextStyle(
+                              fontSize: 28,
+                              color: const Color(0xff39EBD8),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            child: AnimatedTextKit(
+                              animatedTexts: [
+                                WavyAnimatedText(
+                                  'Hello World !!',
+                                ),
+                                WavyAnimatedText(
+                                  "I'm Danche Ng'ang'a",
+                                ),
+                              ],
+                              isRepeatingAnimation: false,
+                              onTap: () {
+                                print("Tap Event");
+                              },
+                            ),
                           ),
                           AnimatedTextKit(
                             animatedTexts: [
                               TypewriterAnimatedText(
-                                  'Discipline is the best tool'),
+                                  'Discipline is the best tool '),
                             ],
                             onTap: () {
-                              print("Tap Event");
+                              print("Tap Event ");
                             },
                           ),
-                          Text('I craft Awesome tech products'),
+                          const Text('I craft Awesome tech products'),
+                          const Text('Get CREATIVE with FLUTTER'),
+                          const Text('Build Apps with FLUTTER'),
+                          const Text('Feed my CURIOSITY with Physics'),
                         ],
+                      ),
+                      Container(
+                        height: screenHeight * .4,
+                        width: 45,
+                        child: timelineTile.TimelineTile(
+                          indicatorStyle: timelineTile.IndicatorStyle(
+                            width: 30,
+                            color: Colors.transparent,
+                            indicatorXY: 0.55,
+                            padding: EdgeInsets.only(
+                              top: 3,
+                              bottom: 2
+                            ),
+                            iconStyle: timelineTile.IconStyle(
+                              color: Colors.tealAccent,
+                              iconData: Icons.thumb_up,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 390,
                 width: 100,
               ),
