@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -56,12 +59,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     Colors.red,
     Colors.white
   ];
-
+  IconData mapPinIcon = CupertinoIcons.map_pin;
   @override
   void initState() {
     _animationController = AnimationController(
       vsync: this, // the SingleTickerProviderStateMixin
-      duration: Duration(seconds: 5),
+      duration: Duration(seconds: 8),
     )..addListener(() {
         setState(() {});
       });
@@ -156,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                   padding: const EdgeInsets.all(12.0),
                   child: Container(
-                    height: screenHeight * 0.42,
+                    height: screenHeight * 0.46,
                     width: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -209,8 +212,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         ),
 
                         Container(
-                          height: screenHeight * .4,
-                          width: 150,
+                          height: screenHeight * .45,
+                          width: 100,
                           child: timelineTile.TimelineTile(
                             indicatorStyle: timelineTile.IndicatorStyle(
                               height: screenHeight * .15,
@@ -269,6 +272,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         ),
 
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AnimatedTextKit(
                               //TODO repeatForever: true,
@@ -288,12 +292,66 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               },
                             ),
                             skillWidget(
-                                skill: 'Flutter/dart',
-                                icondata: Icons.flutter_dash)
+                                skill: 'Flutter/dart(mobile and desktop Apps)',
+                                icondata: CupertinoIcons.pin_fill),
+                            skillWidget(
+                                skill: 'Version Control - Git, Github',
+                                icondata: mapPinIcon),
+                            skillWidget(
+                                skill: 'Cloud computing - Aws,Firebase',
+                                icondata: mapPinIcon),
+                            skillWidget(
+                                skill: 'Python,C,C++', icondata: mapPinIcon),
+                            skillWidget(
+                                skill: 'Linux ecosystem', icondata: mapPinIcon),
+                            skillWidget(
+                                skill:
+                                    'Computer networking - Routing & switching,Network security',
+                                icondata: mapPinIcon),
+                            skillWidget(
+                                skill:
+                                    'Applied Physics - Electronics,Renewable energy,Communication Eng',
+                                icondata: CupertinoIcons.waveform)
                           ],
                         )
                       ],
                     ),
+                  ),
+                ),
+                Container(
+                  height: 200,
+                  child: timelineTile.TimelineTile(
+                    
+                    alignment: timelineTile.TimelineAlign.center,
+                    indicatorStyle: timelineTile.IndicatorStyle(
+                        width: screenWidth*0.8,
+                        height: 70,
+                        drawGap: true,
+                        indicator: Container(
+                          width: screenWidth*.8,
+                          height: 10,
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(20)),
+                        )),
+                  ),
+                ),
+                  Container(
+                  height: 200,
+                  child: timelineTile.TimelineTile(
+                    
+                    alignment: timelineTile.TimelineAlign.center,
+                    indicatorStyle: timelineTile.IndicatorStyle(
+                        width: screenWidth*0.8,
+                        height: 70,
+                        drawGap: true,
+                        indicator: Container(
+                          width: screenWidth*.8,
+                          height: 10,
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(20)),
+                        )),
                   ),
                 ),
                 const SizedBox(
@@ -364,9 +422,21 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
 Widget skillWidget({required String skill, required IconData icondata}) {
   return SizedBox(
-    height: 20,
+    height: 35,
     child: Row(
-      children: [Icon(icondata), Text(skill)],
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Icon(
+          icondata,
+          color: Colors.orangeAccent,
+        ),
+        Text(
+          skill,
+          softWrap: true,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        )
+      ],
     ),
   );
 }
