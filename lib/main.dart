@@ -1,12 +1,12 @@
 import 'dart:developer';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
+import 'package:genialngash/projectsTile.dart';
+import 'package:genialngash/widgets.dart';
 import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
 
 void main() {
@@ -318,42 +318,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                Container(
-                  height: 200,
-                  child: timelineTile.TimelineTile(
-                    
-                    alignment: timelineTile.TimelineAlign.center,
-                    indicatorStyle: timelineTile.IndicatorStyle(
-                        width: screenWidth*0.8,
-                        height: 70,
-                        drawGap: true,
-                        indicator: Container(
-                          width: screenWidth*.8,
-                          height: 10,
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(20)),
-                        )),
-                  ),
-                ),
-                  Container(
-                  height: 200,
-                  child: timelineTile.TimelineTile(
-                    
-                    alignment: timelineTile.TimelineAlign.center,
-                    indicatorStyle: timelineTile.IndicatorStyle(
-                        width: screenWidth*0.8,
-                        height: 70,
-                        drawGap: true,
-                        indicator: Container(
-                          width: screenWidth*.8,
-                          height: 10,
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(20)),
-                        )),
-                  ),
-                ),
+                ProjectsTile(screenWidth: screenWidth),
+                ProjectsTile(screenWidth: screenWidth),
                 const SizedBox(
                   height: 390,
                   width: 100,
@@ -418,27 +384,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-}
-
-Widget skillWidget({required String skill, required IconData icondata}) {
-  return SizedBox(
-    height: 35,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(
-          icondata,
-          color: Colors.orangeAccent,
-        ),
-        Text(
-          skill,
-          softWrap: true,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        )
-      ],
-    ),
-  );
 }
 
 class PersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
