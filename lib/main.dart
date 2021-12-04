@@ -53,12 +53,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double thirdDepth = 50;
   double fourthDepth = 50;
   late AnimationController _animationController;
-  static const colorizeColors = [
-    Colors.greenAccent,
-    Colors.tealAccent,
-    Colors.red,
-    Colors.white
-  ];
+
   IconData mapPinIcon = CupertinoIcons.map_pin;
   @override
   void initState() {
@@ -160,17 +155,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   padding: const EdgeInsets.all(12.0),
                   child: Container(
                     height: screenHeight * 0.46,
-                    width: screenWidth*0.8,
+                    width: screenWidth * 0.8,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        // Container(
-                        //   height: 140,
-                        //   child: const Text(
-                        //     'I',
-                        //     style: TextStyle(fontSize: 108),
-                        //   ),
-                        // ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -210,7 +198,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             const Text('Feed my CURIOSITY with Physics'),
                           ],
                         ),
-
                         Container(
                           height: screenHeight * .45,
                           width: 100,
@@ -270,27 +257,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AnimatedTextKit(
-                              //TODO repeatForever: true,
-                              animatedTexts: [
-                                ColorizeAnimatedText(
-                                  'SKILLS. ',
-                                  speed: Duration(milliseconds: 357),
-                                  textStyle: TextStyle(
-                                    fontSize: 30,
-                                  ),
-                                  colors: colorizeColors,
-                                ),
-                              ],
-                              isRepeatingAnimation: true,
-                              onTap: () {
-                                print("Tap Event");
-                              },
-                            ),
+                            textAnimateColorized(text: 'SKILLS. '),
                             skillWidget(
                                 skill: 'Flutter/dart(mobile and desktop Apps)',
                                 icondata: CupertinoIcons.pin_fill),
@@ -318,8 +288,36 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                ProjectsTile(screenWidth: screenWidth),
-                ProjectsTile(screenWidth: screenWidth),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  height: 135,
+                  child: timelineTile.TimelineTile(
+                    lineXY: 0.42469,
+                    alignment: timelineTile.TimelineAlign.manual,
+                    indicatorStyle: timelineTile.IndicatorStyle(
+                      width: screenWidth * 0.3,
+                      height: 55,
+                      drawGap: true,
+                      indicator: Container(
+                        alignment: Alignment.center,
+                        width: screenWidth * .3,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent.withOpacity(0.8),
+                          border: Border.all(
+                            color: Colors.amber,
+                          ),
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        child: textAnimateColorized(text: 'PROJECTS. '),
+                      ),
+                    ),
+                  ),
+                ),
+                ProjectsTile(
+                  screenWidth: screenWidth,
+                  projectTitle: 'PROJECTS',
+                ),
                 const SizedBox(
                   height: 390,
                   width: 100,
