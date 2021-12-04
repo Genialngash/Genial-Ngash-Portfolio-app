@@ -39,7 +39,7 @@ Widget textAnimateColorized({required String text}) {
         text,
         speed: Duration(milliseconds: 357),
         textStyle: TextStyle(
-          fontSize: 30,
+          fontSize: 25,
         ),
         colors: colorizeColors,
       ),
