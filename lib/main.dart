@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   padding: const EdgeInsets.all(12.0),
                   child: Container(
                     height: screenHeight * 0.46,
-                    width: 100,
+                    width: screenWidth*0.8,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
