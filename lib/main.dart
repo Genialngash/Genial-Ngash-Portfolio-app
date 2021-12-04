@@ -289,8 +289,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 135,
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  height: 125,
                   child: timelineTile.TimelineTile(
                     lineXY: 0.42469,
                     alignment: timelineTile.TimelineAlign.manual,
@@ -315,8 +315,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 ProjectsTile(
-                  screenWidth: screenWidth,
-                  projectTitle: 'PROJECTS',
+                
+                  projectTitle: 'Telegram Links app',
+                  assetImageName: 'telegram.jpg',
+                  url:
+                      'https://play.google.com/store/apps/details?id=com.telegramlinks',
+                  projectDescription:
+                      'The app contains a catalogue for telegram Links - channels,groups and bots well arranged and categorized',
+                ),
+                ProjectsTile(
+                 
+                  projectTitle: 'Telegram Links app',
+                  assetImageName: 'telegram_dark.jpg',
+                  url:
+                      'https://play.google.com/store/apps/details?id=com.telegramlinks',
+                  projectDescription:
+                      'The app contains a catalogue for telegram Links - channels,groups and bots well arranged and categorized',
                 ),
                 const SizedBox(
                   height: 390,
