@@ -315,23 +315,34 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 ProjectsTile(
-                
                   projectTitle: 'Telegram Links app',
                   assetImageName: 'telegram.jpg',
                   url:
                       'https://play.google.com/store/apps/details?id=com.telegramlinks',
                   projectDescription:
-                      'The app contains a catalogue for telegram Links - channels,groups and bots well arranged and categorized',
+                      'The app contains catalogue for telegram Links - channels,groups and bots well arranged and categorized',
                 ),
                 ProjectsTile(
-                 
-                  projectTitle: 'Telegram Links app',
+                  projectTitle: 'Telegram Links Desktop(Linux) application',
                   assetImageName: 'telegram_dark.jpg',
                   url:
-                      'https://play.google.com/store/apps/details?id=com.telegramlinks',
+                      'https://github.com/Genialngash/Telegram-Links-desktop-installer-Linux-',
                   projectDescription:
-                      'The app contains a catalogue for telegram Links - channels,groups and bots well arranged and categorized',
+                      'A desktop version for the telegram links android app',
                 ),
+                ProjectsTile(
+                    projectTitle: 'Applied Physics (CURRENT project)',
+                    projectDescription: '''A platform that aids physcists, scientists,and reserchers in collaboration, referencing and calculations''',
+                    assetImageName: 'applied.png'),
+                    ProjectsTile(projectTitle: 'Ohm’s resistance', assetImageName: 'ohms.png',
+                    projectDescription: 'Enables the user to calculate resistor color coding in real time and OHM\'s law',
+                    url: 'https://play.google.com/store/apps/details?id=com.ohmsresistance',
+                    ),
+                    ProjectsTile(projectTitle: 'Bonyeza', assetImageName: 'bonyeza.jpg',
+                    projectDescription: 'Enables one to dial USSD codes directly - reduces the hussle of craming the codes',
+                    url: 'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
+
+                    ),
                 const SizedBox(
                   height: 390,
                   width: 100,
