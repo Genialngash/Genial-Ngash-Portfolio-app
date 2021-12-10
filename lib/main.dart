@@ -47,7 +47,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  Color baseColor = Color(0xff254341);
+  Color baseColor = const Color(0xff254341);
   double firstDepth = 10;
   double secondDepth = 50;
   double thirdDepth = 50;
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   void initState() {
     _animationController = AnimationController(
       vsync: this, // the SingleTickerProviderStateMixin
-      duration: Duration(seconds: 8),
+      duration: const Duration(seconds: 8),
     )..addListener(() {
         setState(() {});
       });
@@ -208,10 +208,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               color: Colors.transparent,
                               drawGap: true,
                               indicatorXY: 0.52,
-                              padding: EdgeInsets.only(top: 3, bottom: 2),
+                              padding: const EdgeInsets.only(top: 3, bottom: 2),
                               indicator: Center(
                                 child: ClayContainer(
-                                  color: Color(0xffF13D3D),
+                                  color: const Color(0xffF13D3D),
                                   height: screenHeight * .4,
                                   width: screenHeight * .4,
                                   borderRadius: 150,
@@ -226,14 +226,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       spread: 100,
                                       depth: calculatedSecondDepth.toInt(),
                                       curveType: CurveType.convex,
-                                      color: Color(0xff05261C),
+                                      color: const Color(0xff05261C),
                                       child: Center(
                                         child: ClayContainer(
                                           height: screenHeight * .2,
                                           width: screenHeight * .2,
                                           borderRadius: 150,
                                           spread: 3,
-                                          color: Color(0xff0A5743),
+                                          color: const Color(0xff0A5743),
                                           depth: calculatedThirdDepth.toInt(),
                                           curveType: CurveType.concave,
                                           child: Center(
@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                               width: screenHeight * .08,
                                               spread: 3.5,
                                               borderRadius: 150,
-                                              color: Color(0xff043D2E),
+                                              color: const Color(0xff043D2E),
                                               depth:
                                                   calculatedFourthDepth.toInt(),
                                               curveType: CurveType.convex,
@@ -289,13 +289,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
                   height: 125,
                   child: timelineTile.TimelineTile(
+                   
                     lineXY: 0.42469,
                     alignment: timelineTile.TimelineAlign.manual,
                     indicatorStyle: timelineTile.IndicatorStyle(
-                      width: screenWidth * 0.3,
+                      width: screenWidth * .3,
                       height: 55,
                       drawGap: true,
                       indicator: Container(
@@ -314,35 +315,48 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                ProjectsTile(
+                const ProjectsTile(
                   projectTitle: 'Telegram Links app',
+                  index: '1',
                   assetImageName: 'telegram.jpg',
                   url:
                       'https://play.google.com/store/apps/details?id=com.telegramlinks',
                   projectDescription:
-                      'The app contains catalogue for telegram Links - channels,groups and bots well arranged and categorized',
+                      'The app contains catalogue for telegram Links - channels,groups and bots that are well arranged and categorized',
                 ),
-                ProjectsTile(
+                const ProjectsTile(
                   projectTitle: 'Telegram Links Desktop(Linux) application',
                   assetImageName: 'telegram_dark.jpg',
+                  index: '2',
                   url:
                       'https://github.com/Genialngash/Telegram-Links-desktop-installer-Linux-',
                   projectDescription:
-                      'A desktop version for the telegram links android app',
+                      'A desktop version of the telegram links android app.Supported on major linux distributions',
                 ),
-                ProjectsTile(
+                const ProjectsTile(
                     projectTitle: 'Applied Physics (CURRENT project)',
-                    projectDescription: '''A platform that aids physcists, scientists,and reserchers in collaboration, referencing and calculations''',
+                    index: '3',
+                    projectDescription:
+                        '''A platform that aids Engineers, scientists,and researchers in collaboration, referencing and calculations''',
                     assetImageName: 'applied.png'),
-                    ProjectsTile(projectTitle: 'Ohm’s resistance', assetImageName: 'ohms.png',
-                    projectDescription: 'Enables the user to calculate resistor color coding in real time and OHM\'s law',
-                    url: 'https://play.google.com/store/apps/details?id=com.ohmsresistance',
-                    ),
-                    ProjectsTile(projectTitle: 'Bonyeza', assetImageName: 'bonyeza.jpg',
-                    projectDescription: 'Enables one to dial USSD codes directly - reduces the hussle of craming the codes',
-                    url: 'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
-
-                    ),
+                const ProjectsTile(
+                  projectTitle: 'Ohm’s resistance',
+                  assetImageName: 'ohms.png',
+                  index: '4',
+                  projectDescription:
+                      'Enables the user to calculate resistor color coding in real time and OHM\'s law',
+                  url:
+                      'https://play.google.com/store/apps/details?id=com.ohmsresistance',
+                ),
+                const ProjectsTile(
+                  projectTitle: 'Bonyeza',
+                  assetImageName: 'bonyeza.jpg',
+                  index: '5',
+                  projectDescription:
+                      'Enables one to dial USSD codes directly - reduces the hussle of craming the codes',
+                  url:
+                      'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
+                ),
                 const SizedBox(
                   height: 390,
                   width: 100,
