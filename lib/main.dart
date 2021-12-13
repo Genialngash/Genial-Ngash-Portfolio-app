@@ -138,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             delegate: SliverChildListDelegate(
               [
                 NeumorphicButton(
+                  //tooltip: 'Bio Data',
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   onPressed: () {
                     print("onClick");
@@ -152,51 +153,54 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             bottomRight: Radius.circular(20),
                             topLeft: Radius.circular(20))),
                   ),
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
                   child: Container(
                     height: screenHeight * 0.46,
-                    width: screenWidth * 0.8,
+                    width: screenWidth * 0.84,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            DefaultTextStyle(
-                              style: const TextStyle(
-                                fontSize: 28,
-                                color: const Color(0xff18F2DA),
-                                fontWeight: FontWeight.w700,
+                        Container(
+                          height: screenHeight * 0.46,
+                          width: screenWidth * .29,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              DefaultTextStyle(
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  color: const Color(0xff18F2DA),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                child: AnimatedTextKit(
+                                  animatedTexts: [
+                                    WavyAnimatedText(
+                                      'Hello World !!',
+                                    ),
+                                    WavyAnimatedText(
+                                      "I'm Danche Ng'ang'a",
+                                    ),
+                                  ],
+                                  isRepeatingAnimation: false,
+                                  onTap: () {
+                                    print("Tap Event");
+                                  },
+                                ),
                               ),
-                              child: AnimatedTextKit(
+                              AnimatedTextKit(
                                 animatedTexts: [
-                                  WavyAnimatedText(
-                                    'Hello World !!',
-                                  ),
-                                  WavyAnimatedText(
-                                    "I'm Danche Ng'ang'a",
-                                  ),
+                                  TypewriterAnimatedText(
+                                      'I craft AWESOME tech products '),
                                 ],
-                                isRepeatingAnimation: false,
                                 onTap: () {
-                                  print("Tap Event");
+                                  print("Tap Event ");
                                 },
                               ),
-                            ),
-                            AnimatedTextKit(
-                              animatedTexts: [
-                                TypewriterAnimatedText(
-                                    'Discipline is the best tool '),
-                              ],
-                              onTap: () {
-                                print("Tap Event ");
-                              },
-                            ),
-                            const Text('I craft AWESOME tech products'),
-                            const Text('Get CREATIVE with FLUTTER'),
-                            const Text('Build Apps with FLUTTER'),
-                            const Text('Feed my CURIOSITY with Physics'),
-                          ],
+                              const Text('Get CREATIVE with FLUTTER'),
+                              const Text('Build Apps with FLUTTER'),
+                              const Text('Feed my CURIOSITY with Physics'),
+                            ],
+                          ),
                         ),
                         Container(
                           height: screenHeight * .45,
@@ -257,32 +261,46 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            textAnimateColorized(text: 'SKILLS. '),
-                            skillWidget(
-                                skill: 'Flutter/dart(mobile and desktop Apps)',
-                                icondata: CupertinoIcons.pin_fill),
-                            skillWidget(
-                                skill: 'Version Control - Git, Github',
-                                icondata: mapPinIcon),
-                            skillWidget(
-                                skill: 'Cloud computing - Aws,Firebase',
-                                icondata: mapPinIcon),
-                            skillWidget(
-                                skill: 'Python,C,C++', icondata: mapPinIcon),
-                            skillWidget(
-                                skill: 'Linux ecosystem', icondata: mapPinIcon),
-                            skillWidget(
-                                skill:
-                                    'Computer networking - Routing & switching,Network security',
-                                icondata: mapPinIcon),
-                            skillWidget(
-                                skill:
-                                    'Applied Physics - Electronics,Renewable energy,Communication Eng',
-                                icondata: CupertinoIcons.waveform)
-                          ],
+                        Container(
+                          height: screenHeight * .46,
+                          width: screenWidth * .40,
+                          child: ListView(
+                              clipBehavior: Clip.antiAlias,
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    textAnimateColorized(text: 'SKILLS. '),
+                                    skillWidget(
+                                        skill:
+                                            'Flutter/dart(mobile and desktop Apps)',
+                                        icondata: CupertinoIcons.pin_fill),
+                                    skillWidget(
+                                        skill: 'Version Control - Git, Github',
+                                        icondata: mapPinIcon),
+                                    skillWidget(
+                                        skill: 'Cloud computing - Aws,Firebase',
+                                        icondata: mapPinIcon),
+                                    skillWidget(
+                                        skill: 'Python,C,C++',
+                                        icondata: mapPinIcon),
+                                   
+                                    skillWidget(
+                                        skill:
+                                            'Computer networking - Routing & switching,Network security',
+                                        icondata: mapPinIcon), skillWidget(
+                                        skill: 'Linux ecosystem and security - Parrot O.S',
+                                        icondata: mapPinIcon),
+                                    skillWidget(
+                                        skill:
+                                            '''Applied Physics - Electronics,Renewable energy,Communication 
+                                               Engineering
+                                            ''',
+                                        icondata: CupertinoIcons.waveform)
+                                  ],
+                                ),
+                              ]),
                         )
                       ],
                     ),
@@ -292,7 +310,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   height: 125,
                   child: timelineTile.TimelineTile(
-                   
                     lineXY: 0.42469,
                     alignment: timelineTile.TimelineAlign.manual,
                     indicatorStyle: timelineTile.IndicatorStyle(
@@ -336,6 +353,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 const ProjectsTile(
                     projectTitle: 'Applied Physics (CURRENT project)',
                     index: '3',
+                    url: 'https://github.com/Genialngash',
                     projectDescription:
                         '''A platform that aids Engineers, scientists,and researchers in collaboration, referencing and calculations''',
                     assetImageName: 'applied.png'),
