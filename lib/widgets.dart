@@ -17,10 +17,10 @@ Widget skillWidget({required String skill, required IconData icondata}) {
         ),
         Text(
           skill,
-          style: GoogleFonts.sourceCodePro(),
+          style: GoogleFonts.ibmPlexMono(),
           softWrap: true,
           maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.fade,
         )
       ],
     ),
@@ -40,7 +40,7 @@ Widget textAnimateColorized({required String text}) {
       ColorizeAnimatedText(
         text,
         speed: Duration(milliseconds: 357),
-        textStyle: TextStyle(
+        textStyle: GoogleFonts.secularOne(
           fontSize: 25,
         ),
         colors: colorizeColors,
