@@ -2,13 +2,20 @@ import 'dart:developer';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:genialngash/projectsTile.dart';
 import 'package:genialngash/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+;
 import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
 
+import 'countdown_timer/flutter_countdown_timer.dart';
+
+//TODO internet buddies widget
 void main() {
   runApp(const MyApp());
 }
@@ -52,9 +59,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double secondDepth = 50;
   double thirdDepth = 50;
   double fourthDepth = 50;
+
   late AnimationController _animationController;
+  Stream<Duration> _streamDays() {
+    Duration interval = Duration(seconds: 1);
+    Stream<Duration> stream =
+        Stream<Duration>.periodic(interval, calculateDays);
+
+    return stream;
+  }
+
+  Duration calculateDays(int value) {
+    return DateTime.now().difference(DateTime(2019, 12, 14, 0, 0));
+  }
 
   IconData mapPinIcon = CupertinoIcons.map_pin;
+  TextStyle bioTextStyle = GoogleFonts.ibmPlexMono(color: Colors.white);
   @override
   void initState() {
     _animationController = AnimationController(
@@ -163,43 +183,52 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         Container(
                           height: screenHeight * 0.46,
                           width: screenWidth * .29,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              DefaultTextStyle(
-                                style: const TextStyle(
-                                  fontSize: 28,
-                                  color: const Color(0xff18F2DA),
-                                  fontWeight: FontWeight.w700,
+                          child: DefaultTextStyle(
+                            style: bioTextStyle,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                DefaultTextStyle(
+                                  style: GoogleFonts.secularOne(
+                                      fontSize: 28,
+                                      color: const Color(0xff2EF3A3),
+                                      //color: Colors.greenAccent,
+                                      fontWeight: FontWeight.w400,
+                                      shadows: [
+                                        Shadow(
+                                            // color: Colors.tealAccent,
+                                            offset: Offset(0.0, 3.0),
+                                            blurRadius: 5.0),
+                                      ]),
+                                  child: AnimatedTextKit(
+                                    animatedTexts: [
+                                      WavyAnimatedText(
+                                        'Hello World !!',
+                                      ),
+                                      WavyAnimatedText(
+                                        "I'm Danche Ng'ang'a",
+                                      ),
+                                    ],
+                                    isRepeatingAnimation: false,
+                                    onTap: () {
+                                      print("Tap Event");
+                                    },
+                                  ),
                                 ),
-                                child: AnimatedTextKit(
+                                AnimatedTextKit(
                                   animatedTexts: [
-                                    WavyAnimatedText(
-                                      'Hello World !!',
-                                    ),
-                                    WavyAnimatedText(
-                                      "I'm Danche Ng'ang'a",
-                                    ),
+                                    TypewriterAnimatedText(
+                                        'I craft AWESOME tech products '),
                                   ],
-                                  isRepeatingAnimation: false,
                                   onTap: () {
-                                    print("Tap Event");
+                                    print("Tap Event ");
                                   },
                                 ),
-                              ),
-                              AnimatedTextKit(
-                                animatedTexts: [
-                                  TypewriterAnimatedText(
-                                      'I craft AWESOME tech products '),
-                                ],
-                                onTap: () {
-                                  print("Tap Event ");
-                                },
-                              ),
-                              const Text('Get CREATIVE with FLUTTER'),
-                              const Text('Build Apps with FLUTTER'),
-                              const Text('Feed my CURIOSITY with Physics'),
-                            ],
+                                const Text('Get CREATIVE with FLUTTER'),
+                                const Text('Build Apps with FLUTTER'),
+                                const Text('Feed my CURIOSITY with Physics'),
+                              ],
+                            ),
                           ),
                         ),
                         Container(
@@ -285,12 +314,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     skillWidget(
                                         skill: 'Python,C,C++',
                                         icondata: mapPinIcon),
-                                   
                                     skillWidget(
                                         skill:
                                             'Computer networking - Routing & switching,Network security',
-                                        icondata: mapPinIcon), skillWidget(
-                                        skill: 'Linux ecosystem and security - Parrot O.S',
+                                        icondata: mapPinIcon),
+                                    skillWidget(
+                                        skill:
+                                            'Linux ecosystem and security - Parrot O.S',
                                         icondata: mapPinIcon),
                                     skillWidget(
                                         skill:
@@ -307,7 +337,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.only(left: 20, right: 30),
                   height: 125,
                   child: timelineTile.TimelineTile(
                     lineXY: 0.42469,
@@ -379,15 +409,57 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   height: 390,
                   width: 100,
                 ),
-                NeumorphicText(
-                  "I love flutter",
-                  style: const NeumorphicStyle(
-                    depth: 7, //customize depth here
-                    color: Colors.black, //customize color here
-                  ),
-                  textStyle: NeumorphicTextStyle(
-                    fontSize: 28, //customize size here
-                    // AND others usual text style properties (fontFamily, fontWeight, ...)
+                Container(
+                  height: screenHeight * .3,
+                  width: screenWidth - 100,
+                  child: Column(
+                    children: [
+                      Text('I have been using flutter for: '),
+                      StreamBuilder<Duration>(
+                          stream: _streamDays(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<Duration> snapshot) {
+                            var data = snapshot.data;
+                            var seconds = data!.inSeconds;
+                            final days = seconds ~/ Duration.secondsPerDay;
+                            seconds -= days * Duration.secondsPerDay;
+                            final hours = seconds ~/ Duration.secondsPerHour;
+                            seconds -= hours * Duration.secondsPerHour;
+                            final minutes =
+                                seconds ~/ Duration.secondsPerMinute;
+                            seconds -= minutes * Duration.secondsPerMinute;
+
+                            final List<String> tokens = [];
+                            if (days != 0) {
+                              tokens.add('${days}');
+                            }
+                            if (tokens.isNotEmpty || hours != 0) {
+                              tokens.add('${hours}');
+                            }
+                            if (tokens.isNotEmpty || minutes != 0) {
+                              tokens.add('${minutes}');
+                            }
+                            tokens.add('${seconds}');
+
+                           // tokens.join(':');
+                            print(tokens);
+
+                            if (data == null) return Text('Error');
+                            return Text(
+                                'days : ${tokens[0]}, hours : ${tokens[1]} , minutes: ${tokens[2]} ,seconds : ${tokens[3]}');
+                          }),
+                      ElevatedButton(
+                          onPressed: () {
+                            var time = DateTime.now()
+                                .difference(DateTime(2021, 12, 15, 17, 01, 00))
+                                .inSeconds;
+                            var time2 = DateTime.now()
+                                .difference(DateTime(2021, 12, 15, 17, 01, 00))
+                                .inMilliseconds;
+                            print(time);
+                          },
+                          child: Text('data'))
+                    ],
                   ),
                 ),
                 Container(
