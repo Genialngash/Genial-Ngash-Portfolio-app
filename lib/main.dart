@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
+import 'package:clay_containers/widgets/clay_text.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +11,14 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:genialngash/projectsTile.dart';
 import 'package:genialngash/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-;
-import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
 
-import 'countdown_timer/flutter_countdown_timer.dart';
+import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
 
 //TODO internet buddies widget
 void main() {
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const NeumorphicApp(
+    return  NeumorphicApp(
       debugShowCheckedModeBanner: false,
       title: 'Ngash Portfolio',
       themeMode: ThemeMode.dark,
@@ -36,7 +36,9 @@ class MyApp extends StatelessWidget {
         depth: 10,
       ),
       darkTheme: NeumorphicThemeData(
-        baseColor: Color(0xFF121312),
+        baseColor: 
+        //baseColor,
+        Color(0xFF121312),
         lightSource: LightSource.topLeft,
         shadowDarkColor: NeumorphicColors.decorationMaxDarkColor,
         depth: 9,
@@ -54,7 +56,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  Color baseColor = const Color(0xff254341);
+//  Color baseColor = const Color(0xff254341);
+
+Color baseColor =  Color(0xff2B2E2B);
   double firstDepth = 10;
   double secondDepth = 50;
   double thirdDepth = 50;
@@ -64,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Stream<Duration> _streamDays() {
     Duration interval = Duration(seconds: 1);
     Stream<Duration> stream =
-        Stream<Duration>.periodic(interval, calculateDays);
+        Stream<Duration>.periodic(interval, calculateDays).asBroadcastStream();
 
     return stream;
   }
@@ -405,22 +409,29 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   url:
                       'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
                 ),
-                const SizedBox(
-                  height: 390,
-                  width: 100,
-                ),
                 Container(
                   height: screenHeight * .3,
                   width: screenWidth - 100,
+                  color: baseColor,
+                  alignment: Alignment.center,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('I have been using flutter for: '),
+                      ClayText(
+                        'I have been using flutter for: ',
+                        emboss: true,
+                        color: baseColor,
+                        depth: 20,
+                        spread: 2,
+                        size: 40,
+                      ),
                       StreamBuilder<Duration>(
                           stream: _streamDays(),
                           builder: (BuildContext context,
                               AsyncSnapshot<Duration> snapshot) {
                             var data = snapshot.data;
-                            var seconds = data!.inSeconds;
+                            if (data == null) return Text('<Loading..>');
+                            var seconds = data.inSeconds;
                             final days = seconds ~/ Duration.secondsPerDay;
                             seconds -= days * Duration.secondsPerDay;
                             final hours = seconds ~/ Duration.secondsPerHour;
@@ -441,12 +452,30 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             }
                             tokens.add('${seconds}');
 
-                           // tokens.join(':');
+                            // tokens.join(':');
                             print(tokens);
 
-                            if (data == null) return Text('Error');
-                            return Text(
-                                'days : ${tokens[0]}, hours : ${tokens[1]} , minutes: ${tokens[2]} ,seconds : ${tokens[3]}');
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ExperienceDaysContainer(
+                                  duration: tokens[0],
+                                  durationName: 'Days',
+                                ),
+                                ExperienceDaysContainer(
+                                  duration: tokens[1],
+                                  durationName: 'Hours',
+                                ),
+                                ExperienceDaysContainer(
+                                  duration: tokens[2],
+                                  durationName: 'Minutes',
+                                ),
+                                ExperienceDaysContainer(
+                                  duration: tokens[3],
+                                  durationName: 'Seconds',
+                                ),
+                              ],
+                            );
                           }),
                       ElevatedButton(
                           onPressed: () {
@@ -458,7 +487,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                 .inMilliseconds;
                             print(time);
                           },
-                          child: Text('data'))
+                          child: Text('test button'))
                     ],
                   ),
                 ),
@@ -467,8 +496,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   child: Center(
                     child: ClayContainer(
                       color: baseColor,
-                      height: 240,
-                      width: 240,
+                      height: 200,
+                      width: 200,
                       borderRadius: 200,
                       curveType: CurveType.concave,
                       spread: 30,
