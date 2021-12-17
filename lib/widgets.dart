@@ -1,4 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:clay_containers/clay_containers.dart';
+import 'package:clay_containers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -51,4 +53,34 @@ Widget textAnimateColorized({required String text}) {
       print("Tap Event");
     },
   );
+}
+
+class ExperienceDaysContainer extends StatelessWidget {
+  const ExperienceDaysContainer(
+      {Key? key, required this.duration, required this.durationName})
+      : super(key: key);
+
+  final String duration;
+  final String durationName;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClayContainer(
+      
+        height: 60,
+        depth: 60,
+        spread: 2,
+        width: 70,
+        curveType: CurveType.concave,
+       
+        color: const Color(0xff2F5552),
+        customBorderRadius: BorderRadius.all(
+          Radius.elliptical(3, 13),
+        ),
+      
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text(duration), Text(durationName)],
+        ));
+  }
 }
