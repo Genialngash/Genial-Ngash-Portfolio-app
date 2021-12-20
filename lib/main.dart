@@ -19,14 +19,13 @@ void main() {
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  NeumorphicApp(
+    return NeumorphicApp(
       debugShowCheckedModeBanner: false,
       title: 'Ngash Portfolio',
       themeMode: ThemeMode.dark,
@@ -36,9 +35,9 @@ class MyApp extends StatelessWidget {
         depth: 10,
       ),
       darkTheme: NeumorphicThemeData(
-        baseColor: 
-        //baseColor,
-        Color(0xFF121312),
+        baseColor:
+            //baseColor,
+            Color(0xFF121312),
         lightSource: LightSource.topLeft,
         shadowDarkColor: NeumorphicColors.decorationMaxDarkColor,
         depth: 9,
@@ -56,9 +55,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-//  Color baseColor = const Color(0xff254341);
+  Color baseColor = const Color(0xff00100F);
 
-Color baseColor =  Color(0xff2B2E2B);
+  //Color baseColor = Color(0xff001413);
   double firstDepth = 10;
   double secondDepth = 50;
   double thirdDepth = 50;
@@ -161,182 +160,142 @@ Color baseColor =  Color(0xff2B2E2B);
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                NeumorphicButton(
+                Container(
                   //tooltip: 'Bio Data',
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  onPressed: () {
-                    print("onClick");
-                  },
-                  style: NeumorphicStyle(
-                    lightSource: LightSource.bottom,
-                    intensity: 0.5,
-                    depth: 3,
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(
-                        const BorderRadius.only(
-                            bottomRight: Radius.circular(20),
-                            topLeft: Radius.circular(20))),
-                  ),
-                  padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
-                  child: Container(
-                    height: screenHeight * 0.46,
-                    width: screenWidth * 0.84,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: screenHeight * 0.46,
-                          width: screenWidth * .29,
-                          child: DefaultTextStyle(
-                            style: bioTextStyle,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                DefaultTextStyle(
-                                  style: GoogleFonts.secularOne(
-                                      fontSize: 28,
-                                      color: const Color(0xff2EF3A3),
-                                      //color: Colors.greenAccent,
-                                      fontWeight: FontWeight.w400,
-                                      shadows: [
-                                        Shadow(
-                                            // color: Colors.tealAccent,
-                                            offset: Offset(0.0, 3.0),
-                                            blurRadius: 5.0),
-                                      ]),
-                                  child: AnimatedTextKit(
-                                    animatedTexts: [
-                                      WavyAnimatedText(
-                                        'Hello World !!',
-                                      ),
-                                      WavyAnimatedText(
-                                        "I'm Danche Ng'ang'a",
-                                      ),
-                                    ],
-                                    isRepeatingAnimation: false,
-                                    onTap: () {
-                                      print("Tap Event");
-                                    },
-                                  ),
-                                ),
-                                AnimatedTextKit(
-                                  animatedTexts: [
-                                    TypewriterAnimatedText(
-                                        'I craft AWESOME tech products '),
-                                  ],
-                                  onTap: () {
-                                    print("Tap Event ");
-                                  },
-                                ),
-                                const Text('Get CREATIVE with FLUTTER'),
-                                const Text('Build Apps with FLUTTER'),
-                                const Text('Feed my CURIOSITY with Physics'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: screenHeight * .45,
-                          width: 100,
-                          child: timelineTile.TimelineTile(
-                            indicatorStyle: timelineTile.IndicatorStyle(
-                              height: screenHeight * .15,
-                              width: screenHeight * .15,
-                              color: Colors.transparent,
-                              drawGap: true,
-                              indicatorXY: 0.52,
-                              padding: const EdgeInsets.only(top: 3, bottom: 2),
-                              indicator: Center(
-                                child: ClayContainer(
-                                  color: const Color(0xffF13D3D),
-                                  height: screenHeight * .4,
-                                  width: screenHeight * .4,
-                                  borderRadius: 150,
-                                  curveType: CurveType.concave,
-                                  spread: 150,
-                                  depth: calculatedFirstDepth.toInt(),
-                                  child: Center(
-                                    child: ClayContainer(
-                                      height: screenHeight * .25,
-                                      width: screenHeight * .25,
-                                      borderRadius: 50,
-                                      spread: 100,
-                                      depth: calculatedSecondDepth.toInt(),
-                                      curveType: CurveType.convex,
-                                      color: const Color(0xff05261C),
-                                      child: Center(
-                                        child: ClayContainer(
-                                          height: screenHeight * .2,
-                                          width: screenHeight * .2,
-                                          borderRadius: 150,
-                                          spread: 3,
-                                          color: const Color(0xff0A5743),
-                                          depth: calculatedThirdDepth.toInt(),
-                                          curveType: CurveType.concave,
-                                          child: Center(
-                                            child: ClayContainer(
-                                              height: screenHeight * .08,
-                                              width: screenHeight * .08,
-                                              spread: 3.5,
-                                              borderRadius: 150,
-                                              color: const Color(0xff043D2E),
-                                              depth:
-                                                  calculatedFourthDepth.toInt(),
-                                              curveType: CurveType.convex,
-                                            ),
-                                          ),
+                  margin: const EdgeInsets.symmetric(horizontal: 17),
+                  // onPressed: () {
+                  //   print("onClick");
+                  // },
+                  // style: NeumorphicStyle(
+                  //   lightSource: LightSource.bottom,
+                  //   intensity: 0.5,
+                  //   depth: 3,
+                  //   shape: NeumorphicShape.concave,
+                  //   boxShape: NeumorphicBoxShape.roundRect(
+                  //       const BorderRadius.only(
+                  //           bottomRight: Radius.circular(20),
+                  //           topLeft: Radius.circular(20))),
+                  // ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
+                  child: ClayContainer(
+                    spread: 4,
+                    depth: 27,
+                    curveType: CurveType.concave,
+                    color: baseColor,
+                    //   color: const Color(0xff2F5552),
+                    customBorderRadius: BorderRadius.all(
+                      Radius.elliptical(5, 43),
+                    ),
+                    child: Container(
+                      height: screenHeight * 0.46,
+                      width: screenWidth * 0.84,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            height: screenHeight * 0.46,
+                            width: screenWidth * .29,
+                            child: DefaultTextStyle(
+                              style: bioTextStyle,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  DefaultTextStyle(
+                                    style: GoogleFonts.secularOne(
+                                        fontSize: 28,
+                                        color: const Color(0xff2EF3A3),
+                                        //color: Colors.greenAccent,
+                                        fontWeight: FontWeight.w400,
+                                        shadows: [
+                                          Shadow(
+                                              // color: Colors.tealAccent,
+                                              offset: Offset(0.0, 3.0),
+                                              blurRadius: 5.0),
+                                        ]),
+                                    child: AnimatedTextKit(
+                                      animatedTexts: [
+                                        WavyAnimatedText(
+                                          'Hello World !!',
                                         ),
-                                      ),
+                                        WavyAnimatedText(
+                                          "I'm Danche Ng'ang'a",
+                                        ),
+                                      ],
+                                      isRepeatingAnimation: false,
+                                      onTap: () {
+                                        print("Tap Event");
+                                      },
                                     ),
                                   ),
-                                ),
+                                  AnimatedTextKit(
+                                    animatedTexts: [
+                                      TypewriterAnimatedText(
+                                          'I craft AWESOME tech products '),
+                                    ],
+                                    onTap: () {
+                                      print("Tap Event ");
+                                    },
+                                  ),
+                                  const Text('Get CREATIVE with FLUTTER'),
+                                  const Text('Build Apps with FLUTTER'),
+                                  const Text('Feed my CURIOSITY with Physics'),
+                                ],
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: screenHeight * .46,
-                          width: screenWidth * .40,
-                          child: ListView(
-                              clipBehavior: Clip.antiAlias,
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    textAnimateColorized(text: 'SKILLS. '),
-                                    skillWidget(
-                                        skill:
-                                            'Flutter/dart(mobile and desktop Apps)',
-                                        icondata: CupertinoIcons.pin_fill),
-                                    skillWidget(
-                                        skill: 'Version Control - Git, Github',
-                                        icondata: mapPinIcon),
-                                    skillWidget(
-                                        skill: 'Cloud computing - Aws,Firebase',
-                                        icondata: mapPinIcon),
-                                    skillWidget(
-                                        skill: 'Python,C,C++',
-                                        icondata: mapPinIcon),
-                                    skillWidget(
-                                        skill:
-                                            'Computer networking - Routing & switching,Network security',
-                                        icondata: mapPinIcon),
-                                    skillWidget(
-                                        skill:
-                                            'Linux ecosystem and security - Parrot O.S',
-                                        icondata: mapPinIcon),
-                                    skillWidget(
-                                        skill:
-                                            '''Applied Physics - Electronics,Renewable energy,Communication 
-                                               Engineering
-                                            ''',
-                                        icondata: CupertinoIcons.waveform)
-                                  ],
-                                ),
-                              ]),
-                        )
-                      ],
+                          glowContainerTimeline(
+                              screenHeight,
+                              calculatedFirstDepth,
+                              calculatedSecondDepth,
+                              calculatedThirdDepth,
+                              calculatedFourthDepth),
+                          Container(
+                            height: screenHeight * .46,
+                            width: screenWidth * .40,
+                            child: ListView(
+                                clipBehavior: Clip.antiAlias,
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      textAnimateColorized(text: 'SKILLS. '),
+                                      skillWidget(
+                                          skill:
+                                              'Flutter/dart(mobile and desktop Apps)',
+                                          icondata: CupertinoIcons.pin_fill),
+                                      skillWidget(
+                                          skill:
+                                              'Version Control - Git, Github',
+                                          icondata: mapPinIcon),
+                                      skillWidget(
+                                          skill:
+                                              'Cloud computing - Aws,Firebase',
+                                          icondata: mapPinIcon),
+                                      skillWidget(
+                                          skill: 'Python,C,C++',
+                                          icondata: mapPinIcon),
+                                      skillWidget(
+                                          skill:
+                                              'Computer networking - Routing & switching,Network security',
+                                          icondata: mapPinIcon),
+                                      skillWidget(
+                                          skill:
+                                              'Linux ecosystem and security - Parrot O.S',
+                                          icondata: mapPinIcon),
+                                      skillWidget(
+                                          skill:
+                                              'Applied Physics - Electronics,Renewable energy,Communication Engineering',
+                                          icondata: CupertinoIcons.waveform)
+                                    ],
+                                  ),
+                                ]),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -410,85 +369,111 @@ Color baseColor =  Color(0xff2B2E2B);
                       'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
                 ),
                 Container(
-                  height: screenHeight * .3,
-                  width: screenWidth - 100,
-                  color: baseColor,
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ClayText(
-                        'I have been using flutter for: ',
-                        emboss: true,
-                        color: baseColor,
-                        depth: 20,
-                        spread: 2,
-                        size: 40,
-                      ),
-                      StreamBuilder<Duration>(
-                          stream: _streamDays(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<Duration> snapshot) {
-                            var data = snapshot.data;
-                            if (data == null) return Text('<Loading..>');
-                            var seconds = data.inSeconds;
-                            final days = seconds ~/ Duration.secondsPerDay;
-                            seconds -= days * Duration.secondsPerDay;
-                            final hours = seconds ~/ Duration.secondsPerHour;
-                            seconds -= hours * Duration.secondsPerHour;
-                            final minutes =
-                                seconds ~/ Duration.secondsPerMinute;
-                            seconds -= minutes * Duration.secondsPerMinute;
+                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  child: ClayContainer(
+                    spread: 4,
+                    depth: 24,
+                    height: screenHeight * .3,
+                    width: screenWidth - 100,
+                    color: baseColor,
+                    curveType: CurveType.concave,
+                    // color: const Color(0xff2F5552),
+                    customBorderRadius: BorderRadius.all(
+                      Radius.elliptical(3, 53),
+                    ),
+                    // alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ClayContainer(
+                          color: Color(0xff011A1B),
+                          //emboss: true,
+                          spread: 0.8,
+                          depth: 95,
+                          curveType: CurveType.convex,
+                          customBorderRadius: BorderRadius.all(
+                            Radius.elliptical(3, 13),
+                          ),
+                          child: textAnimateColorized(
+                              text: 'I have been using flutter for :',fontsize: 30),
+                          // child: Text(
+                          //   'I have been using flutter for :',
+                          //   s
+                          //   // emboss: true,
+                          //   // color: Color(0xffD1FBFB),
+                          //   // depth: 15,
+                          //   // spread: 0.5,
+                          //   // size: 40,
+                          // ),
+                        ),
+                        StreamBuilder<Duration>(
+                            stream: _streamDays(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<Duration> snapshot) {
+                              var data = snapshot.data;
+                              if (data == null) return Text('<Loading..>');
+                              var seconds = data.inSeconds;
+                              final days = seconds ~/ Duration.secondsPerDay;
+                              seconds -= days * Duration.secondsPerDay;
+                              final hours = seconds ~/ Duration.secondsPerHour;
+                              seconds -= hours * Duration.secondsPerHour;
+                              final minutes =
+                                  seconds ~/ Duration.secondsPerMinute;
+                              seconds -= minutes * Duration.secondsPerMinute;
 
-                            final List<String> tokens = [];
-                            if (days != 0) {
-                              tokens.add('${days}');
-                            }
-                            if (tokens.isNotEmpty || hours != 0) {
-                              tokens.add('${hours}');
-                            }
-                            if (tokens.isNotEmpty || minutes != 0) {
-                              tokens.add('${minutes}');
-                            }
-                            tokens.add('${seconds}');
+                              final List<String> tokens = [];
+                              if (days != 0) {
+                                tokens.add('${days}');
+                              }
+                              if (tokens.isNotEmpty || hours != 0) {
+                                tokens.add('${hours}');
+                              }
+                              if (tokens.isNotEmpty || minutes != 0) {
+                                tokens.add('${minutes}');
+                              }
+                              tokens.add('${seconds}');
 
-                            // tokens.join(':');
-                            print(tokens);
+                              // tokens.join(':');
+                              print(tokens);
 
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ExperienceDaysContainer(
-                                  duration: tokens[0],
-                                  durationName: 'Days',
-                                ),
-                                ExperienceDaysContainer(
-                                  duration: tokens[1],
-                                  durationName: 'Hours',
-                                ),
-                                ExperienceDaysContainer(
-                                  duration: tokens[2],
-                                  durationName: 'Minutes',
-                                ),
-                                ExperienceDaysContainer(
-                                  duration: tokens[3],
-                                  durationName: 'Seconds',
-                                ),
-                              ],
-                            );
-                          }),
-                      ElevatedButton(
-                          onPressed: () {
-                            var time = DateTime.now()
-                                .difference(DateTime(2021, 12, 15, 17, 01, 00))
-                                .inSeconds;
-                            var time2 = DateTime.now()
-                                .difference(DateTime(2021, 12, 15, 17, 01, 00))
-                                .inMilliseconds;
-                            print(time);
-                          },
-                          child: Text('test button'))
-                    ],
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ExperienceDaysContainer(
+                                    duration: tokens[0],
+                                    durationName: 'Days',
+                                  ),
+                                  ExperienceDaysContainer(
+                                    duration: tokens[1],
+                                    durationName: 'Hours',
+                                  ),
+                                  ExperienceDaysContainer(
+                                    duration: tokens[2],
+                                    durationName: 'Minutes',
+                                  ),
+                                  ExperienceDaysContainer(
+                                    duration: tokens[3],
+                                    durationName: 'Seconds',
+                                  ),
+                                ],
+                              );
+                            }),
+                        // ElevatedButton(
+                        //     onPressed: () {
+                        //       var time = DateTime.now()
+                        //           .difference(
+                        //               DateTime(2021, 12, 15, 17, 01, 00))
+                        //           .inSeconds;
+                        //       var time2 = DateTime.now()
+                        //           .difference(
+                        //               DateTime(2021, 12, 15, 17, 01, 00))
+                        //           .inMilliseconds;
+                        //       print(time);
+                        //     },
+                        //     child: Text('test button'))
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -537,6 +522,72 @@ Color baseColor =  Color(0xff2B2E2B);
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Container glowContainerTimeline(
+      double screenHeight,
+      double calculatedFirstDepth,
+      double calculatedSecondDepth,
+      double calculatedThirdDepth,
+      double calculatedFourthDepth) {
+    return Container(
+      height: screenHeight * .45,
+      width: 100,
+      child: timelineTile.TimelineTile(
+        indicatorStyle: timelineTile.IndicatorStyle(
+          height: screenHeight * .15,
+          width: screenHeight * .15,
+          color: Colors.transparent,
+          drawGap: true,
+          indicatorXY: 0.52,
+          padding: const EdgeInsets.only(top: 3, bottom: 2),
+          indicator: Center(
+            child: ClayContainer(
+              color: const Color(0xffF13D3D),
+              height: screenHeight * .4,
+              width: screenHeight * .4,
+              borderRadius: 150,
+              curveType: CurveType.concave,
+              spread: 150,
+              depth: calculatedFirstDepth.toInt(),
+              child: Center(
+                child: ClayContainer(
+                  height: screenHeight * .25,
+                  width: screenHeight * .25,
+                  borderRadius: 50,
+                  spread: 100,
+                  depth: calculatedSecondDepth.toInt(),
+                  curveType: CurveType.convex,
+                  color: const Color(0xff05261C),
+                  child: Center(
+                    child: ClayContainer(
+                      height: screenHeight * .2,
+                      width: screenHeight * .2,
+                      borderRadius: 150,
+                      spread: 3,
+                      color: const Color(0xff0A5743),
+                      depth: calculatedThirdDepth.toInt(),
+                      curveType: CurveType.concave,
+                      child: Center(
+                        child: ClayContainer(
+                          height: screenHeight * .08,
+                          width: screenHeight * .08,
+                          spread: 3.5,
+                          borderRadius: 150,
+                          color: const Color(0xff043D2E),
+                          depth: calculatedFourthDepth.toInt(),
+                          curveType: CurveType.convex,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
