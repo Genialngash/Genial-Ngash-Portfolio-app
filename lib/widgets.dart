@@ -29,7 +29,7 @@ Widget skillWidget({required String skill, required IconData icondata}) {
   );
 }
 
-Widget textAnimateColorized({required String text}) {
+Widget textAnimateColorized({required String text,double? fontsize}) {
   const colorizeColors = [
     Colors.greenAccent,
     Colors.tealAccent,
@@ -43,7 +43,7 @@ Widget textAnimateColorized({required String text}) {
         text,
         speed: Duration(milliseconds: 357),
         textStyle: GoogleFonts.secularOne(
-          fontSize: 25,
+          fontSize: fontsize??25,
         ),
         colors: colorizeColors,
       ),
@@ -66,18 +66,15 @@ class ExperienceDaysContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClayContainer(
-      
         height: 60,
-        depth: 60,
-        spread: 2,
         width: 70,
+        depth: 70,
+        spread: 2,
         curveType: CurveType.concave,
-       
         color: const Color(0xff2F5552),
         customBorderRadius: BorderRadius.all(
           Radius.elliptical(3, 13),
         ),
-      
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text(duration), Text(durationName)],
