@@ -369,11 +369,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  padding: EdgeInsets.only(left: 7, right: 7, top: 9),
                   child: ClayContainer(
                     spread: 4,
                     depth: 24,
-                    height: screenHeight * .3,
+                    height: screenHeight * .4,
                     width: screenWidth - 100,
                     color: baseColor,
                     curveType: CurveType.concave,
@@ -385,27 +385,51 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ClayContainer(
-                          color: Color(0xff011A1B),
-                          //emboss: true,
-                          spread: 0.8,
-                          depth: 95,
-                          curveType: CurveType.convex,
-                          customBorderRadius: BorderRadius.all(
-                            Radius.elliptical(3, 13),
-                          ),
-                          child: textAnimateColorized(
-                              text: 'I have been using flutter for :',fontsize: 30),
-                          // child: Text(
-                          //   'I have been using flutter for :',
-                          //   s
-                          //   // emboss: true,
-                          //   // color: Color(0xffD1FBFB),
-                          //   // depth: 15,
-                          //   // spread: 0.5,
-                          //   // size: 40,
-                          // ),
+                        // ClayContainer(
+                        //   color: Color(0xff011A1B),
+                        //   //emboss: true,
+                        //   spread: 0.8,
+                        //   depth: 95,
+                        //   curveType: CurveType.convex,
+                        //   customBorderRadius: BorderRadius.all(
+                        //     Radius.elliptical(3, 13),
+                        //   ),
+                        //child:
+
+                        AnimatedTextKit(
+                          animatedTexts: [
+                            ColorizeAnimatedText(
+                              'I have been using flutter for:',
+                              speed: Duration(milliseconds: 340),
+                              textStyle: GoogleFonts.ibmPlexMono(
+                                fontSize: 25,
+                              ),
+                              colors: [
+                                Colors.white,
+                                Colors.greenAccent,
+                                Colors.tealAccent,
+                                Colors.red,
+                              ],
+                            ),
+                          ],
+                        //  isRepeatingAnimation: true,
+                          onTap: () {
+                            print("Tap Event");
+                          },
                         ),
+                        // textAnimateColorized(
+                        //     text: 'I have been using flutter for :',
+                        //     fontsize: 30),
+                        // child: Text(
+                        //   'I have been using flutter for :',
+                        //   s
+                        //   // emboss: true,
+                        //   // color: Color(0xffD1FBFB),
+                        //   // depth: 15,
+                        //   // spread: 0.5,
+                        //   // size: 40,
+                        // ),
+                        // ),
                         StreamBuilder<Duration>(
                             stream: _streamDays(),
                             builder: (BuildContext context,
@@ -459,59 +483,105 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                 ],
                               );
                             }),
-                        // ElevatedButton(
-                        //     onPressed: () {
-                        //       var time = DateTime.now()
-                        //           .difference(
-                        //               DateTime(2021, 12, 15, 17, 01, 00))
-                        //           .inSeconds;
-                        //       var time2 = DateTime.now()
-                        //           .difference(
-                        //               DateTime(2021, 12, 15, 17, 01, 00))
-                        //           .inMilliseconds;
-                        //       print(time);
-                        //     },
-                        //     child: Text('test button'))
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent.withOpacity(0.8),
+                            borderRadius:
+                                const BorderRadius.all(Radius.elliptical(9, 3)),
+                            border: Border.all(
+                              width: 2,
+                              color: Colors.amberAccent,
+                            ),
+                          ),
+                          child: ClayContainer(
+                            height: screenHeight * .2,
+                            width: screenWidth - 200,
+                            borderRadius: 30,
+                            spread: 2,
+                            color: baseColor,
+                            depth: 9,
+                            curveType: CurveType.convex,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Let\'s be Internet Buddies',
+                                  style: GoogleFonts.ibmPlexMono(fontSize: 22),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
+                  height: 200,
+                ),
+                ClayContainer(
+                  height: screenHeight * .25,
+                  width: screenWidth - 100,
+                  borderRadius: 20,
                   color: baseColor,
+                  spread: 2,
+                  depth: calculatedThirdDepth.toInt(),
+                  curveType: CurveType.concave,
                   child: Center(
                     child: ClayContainer(
+                      height: screenHeight * .2,
+                      width: screenWidth - 200,
+                      borderRadius: 20,
+                      spread: 2,
                       color: baseColor,
-                      height: 200,
-                      width: 200,
-                      borderRadius: 200,
+                      depth: calculatedFourthDepth.toInt(),
+                      curveType: CurveType.convex,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 200,
+                ),
+                Container(
+                  height: screenHeight * .3,
+                  width: screenWidth - 100,
+                  color: baseColor,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: ClayContainer(
+                      color: baseColor,
+                      height: screenHeight * .3,
+                      width: screenWidth - 200,
+                      borderRadius: 20,
                       curveType: CurveType.concave,
                       spread: 30,
                       depth: calculatedFirstDepth.toInt(),
                       child: Center(
                         child: ClayContainer(
-                          height: 200,
-                          width: 200,
-                          borderRadius: 200,
+                          height: screenHeight * .28,
+                          width: screenWidth - 300,
+                          borderRadius: 20,
                           depth: calculatedSecondDepth.toInt(),
                           curveType: CurveType.convex,
                           color: baseColor,
                           child: Center(
                             child: ClayContainer(
-                                height: 160,
-                                width: 160,
-                                borderRadius: 200,
-                                color: baseColor,
-                                depth: calculatedThirdDepth.toInt(),
-                                curveType: CurveType.concave,
-                                child: Center(
-                                    child: ClayContainer(
-                                  height: 120,
-                                  width: 120,
-                                  borderRadius: 200,
+                              height: screenHeight * .25,
+                              width: screenWidth - 400,
+                              borderRadius: 20,
+                              color: baseColor,
+                              depth: calculatedThirdDepth.toInt(),
+                              curveType: CurveType.concave,
+                              child: Center(
+                                child: ClayContainer(
+                                  height: screenHeight * .2,
+                                  width: screenWidth - 500,
+                                  borderRadius: 20,
                                   color: baseColor,
                                   depth: calculatedFourthDepth.toInt(),
                                   curveType: CurveType.convex,
-                                ))),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
