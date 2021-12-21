@@ -29,7 +29,7 @@ Widget skillWidget({required String skill, required IconData icondata}) {
   );
 }
 
-Widget textAnimateColorized({required String text,double? fontsize}) {
+Widget textAnimateColorized({required String text, double? fontsize}) {
   const colorizeColors = [
     Colors.greenAccent,
     Colors.tealAccent,
@@ -43,7 +43,7 @@ Widget textAnimateColorized({required String text,double? fontsize}) {
         text,
         speed: Duration(milliseconds: 357),
         textStyle: GoogleFonts.secularOne(
-          fontSize: fontsize??25,
+          fontSize: fontsize ?? 25,
         ),
         colors: colorizeColors,
       ),
@@ -77,7 +77,16 @@ class ExperienceDaysContainer extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(duration), Text(durationName)],
+          children: [
+            Text(
+              duration,
+              style: GoogleFonts.ibmPlexMono(fontSize: 21,),
+            ),
+            Text(
+              durationName,
+              style: GoogleFonts.ibmPlexMono(),
+            )
+          ],
         ));
   }
 }
