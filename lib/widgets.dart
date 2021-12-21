@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/clay_containers.dart';
-import 'package:clay_containers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +15,7 @@ Widget skillWidget({required String skill, required IconData icondata}) {
           icondata,
           color: Colors.orangeAccent,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
@@ -43,7 +42,7 @@ Widget textAnimateColorized({required String text, double? fontsize}) {
     animatedTexts: [
       ColorizeAnimatedText(
         text,
-        speed: Duration(milliseconds: 357),
+        speed: const Duration(milliseconds: 357),
         textStyle: GoogleFonts.secularOne(
           fontSize: fontsize ?? 25,
         ),
@@ -52,7 +51,7 @@ Widget textAnimateColorized({required String text, double? fontsize}) {
     ],
     isRepeatingAnimation: true,
     onTap: () {
-      print("Tap Event");
+     
     },
   );
 }
@@ -74,7 +73,7 @@ class ExperienceDaysContainer extends StatelessWidget {
         spread: 2,
         curveType: CurveType.concave,
         color: const Color(0xff2F5552),
-        customBorderRadius: BorderRadius.all(
+        customBorderRadius: const BorderRadius.all(
           Radius.elliptical(3, 13),
         ),
         child: Column(
@@ -106,6 +105,6 @@ Widget socialMediaWidget({required String url, required IconData iconData}) {
       }
     },
     icon: FaIcon(iconData),
-    color: Color(0xffF0DD9E),
+    color: const Color(0xffF0DD9E),
   );
 }
