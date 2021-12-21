@@ -8,11 +8,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:genialngash/projectsTile.dart';
 import 'package:genialngash/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
+import 'package:url_launcher/url_launcher.dart';
 
 //TODO internet buddies widget
 void main() {
@@ -284,7 +286,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           icondata: mapPinIcon),
                                       skillWidget(
                                           skill:
-                                              'Linux ecosystem and security - Parrot O.S',
+                                              'Linux ecosystem and security - Parrot O.S,Cyber security(Learning)',
                                           icondata: mapPinIcon),
                                       skillWidget(
                                           skill:
@@ -400,19 +402,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           animatedTexts: [
                             ColorizeAnimatedText(
                               'I have been using flutter for:',
-                              speed: Duration(milliseconds: 340),
+                              speed: Duration(milliseconds: 290),
                               textStyle: GoogleFonts.ibmPlexMono(
                                 fontSize: 25,
+                                fontWeight: FontWeight.w500,
                               ),
                               colors: [
                                 Colors.white,
                                 Colors.greenAccent,
+                                Colors.black87,
                                 Colors.tealAccent,
-                                Colors.red,
+                                //   Colors.orange,
                               ],
                             ),
                           ],
-                        //  isRepeatingAnimation: true,
+                          // repeatForever: true,
+                          //  isRepeatingAnimation: true,
                           onTap: () {
                             print("Tap Event");
                           },
@@ -486,14 +491,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         Container(
                           decoration: BoxDecoration(
                             color: Colors.transparent.withOpacity(0.8),
-                            borderRadius:
-                                const BorderRadius.all(Radius.elliptical(9, 3)),
+                            borderRadius: const BorderRadius.all(
+                                Radius.elliptical(19, 3)),
                             border: Border.all(
-                              width: 2,
+                              width: 1.5,
                               color: Colors.amberAccent,
                             ),
                           ),
                           child: ClayContainer(
+                            // emboss: true,
                             height: screenHeight * .2,
                             width: screenWidth - 200,
                             borderRadius: 30,
@@ -502,10 +508,37 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             depth: 9,
                             curveType: CurveType.convex,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
                                   'Let\'s be Internet Buddies',
-                                  style: GoogleFonts.ibmPlexMono(fontSize: 22),
+                                  style: GoogleFonts.ibmPlexMono(
+                                    fontSize: 22,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    socialMediaWidget(
+                                        url:
+                                            'https://www.twitter.com/NgashGenial',
+                                        iconData: FontAwesomeIcons.twitter),
+                                    socialMediaWidget(
+                                        url:
+                                            'https://www.linkedin.com/in/danche-chege-125002174',
+                                        iconData: FontAwesomeIcons.linkedinIn),
+                                    socialMediaWidget(
+                                        url:
+                                            'https://www.github.com/Genialngash',
+                                        iconData: FontAwesomeIcons.github),
+                                    socialMediaWidget(
+                                        url: 'https://t.me/Algorithm1001',
+                                        iconData: FontAwesomeIcons.paperPlane),
+                                    socialMediaWidget(
+                                        url: 'mailto:ngashgenial@gmail.com',
+                                        iconData: FontAwesomeIcons.envelope)
+                                  ],
                                 )
                               ],
                             ),
@@ -516,78 +549,28 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ),
                 ),
                 SizedBox(
-                  height: 200,
+                  height: 20,
                 ),
-                ClayContainer(
-                  height: screenHeight * .25,
-                  width: screenWidth - 100,
-                  borderRadius: 20,
-                  color: baseColor,
-                  spread: 2,
-                  depth: calculatedThirdDepth.toInt(),
-                  curveType: CurveType.concave,
-                  child: Center(
-                    child: ClayContainer(
-                      height: screenHeight * .2,
-                      width: screenWidth - 200,
-                      borderRadius: 20,
-                      spread: 2,
-                      color: baseColor,
-                      depth: calculatedFourthDepth.toInt(),
-                      curveType: CurveType.convex,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 200,
-                ),
-                Container(
-                  height: screenHeight * .3,
-                  width: screenWidth - 100,
-                  color: baseColor,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: ClayContainer(
-                      color: baseColor,
-                      height: screenHeight * .3,
-                      width: screenWidth - 200,
-                      borderRadius: 20,
-                      curveType: CurveType.concave,
-                      spread: 30,
-                      depth: calculatedFirstDepth.toInt(),
-                      child: Center(
-                        child: ClayContainer(
-                          height: screenHeight * .28,
-                          width: screenWidth - 300,
-                          borderRadius: 20,
-                          depth: calculatedSecondDepth.toInt(),
-                          curveType: CurveType.convex,
-                          color: baseColor,
-                          child: Center(
-                            child: ClayContainer(
-                              height: screenHeight * .25,
-                              width: screenWidth - 400,
-                              borderRadius: 20,
-                              color: baseColor,
-                              depth: calculatedThirdDepth.toInt(),
-                              curveType: CurveType.concave,
-                              child: Center(
-                                child: ClayContainer(
-                                  height: screenHeight * .2,
-                                  width: screenWidth - 500,
-                                  borderRadius: 20,
-                                  color: baseColor,
-                                  depth: calculatedFourthDepth.toInt(),
-                                  curveType: CurveType.convex,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // ClayContainer(
+                //   height: screenHeight * .115,
+                //   width: screenWidth - 100,
+                //   borderRadius: 20,
+                //   color: baseColor,
+                //   spread: 2,
+                //   depth: calculatedThirdDepth.toInt(),
+                //   curveType: CurveType.concave,
+                //   child: Center(
+                //     child: ClayContainer(
+                //       height: screenHeight * .2,
+                //       width: screenWidth - 200,
+                //       borderRadius: 20,
+                //       spread: 2,
+                //       color: baseColor,
+                //       depth: calculatedFourthDepth.toInt(),
+                //       curveType: CurveType.convex,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
