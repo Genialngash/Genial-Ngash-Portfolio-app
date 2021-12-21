@@ -6,8 +6,6 @@ import 'package:clay_containers/widgets/clay_text.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:genialngash/projectsTile.dart';
 import 'package:genialngash/widgets.dart';
@@ -27,24 +25,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return NeumorphicApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ngash Portfolio',
-      themeMode: ThemeMode.dark,
-      theme: NeumorphicThemeData(
-        baseColor: Color(0xffC4E9DB),
-        lightSource: LightSource.topLeft,
-        depth: 10,
-      ),
-      darkTheme: NeumorphicThemeData(
-        baseColor:
-            //baseColor,
-            Color(0xFF121312),
-        lightSource: LightSource.topLeft,
-        shadowDarkColor: NeumorphicColors.decorationMaxDarkColor,
-        depth: 9,
-      ),
-      home: MyHomePage(),
+      // themeMode: ThemeMode.dark,
+      // darkTheme: ThemeData(
+      //   primaryColor:  Color(0xFF121312),
+      // ),
+      // theme: ThemeData(
+      //   primaryColor:Color(0xffC4E9DB),
+      // ),
+      home: const MyHomePage(),
     );
   }
 }
@@ -67,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   late AnimationController _animationController;
   Stream<Duration> _streamDays() {
-    Duration interval = Duration(seconds: 1);
+    Duration interval = const Duration(seconds: 1);
     Stream<Duration> stream =
         Stream<Duration>.periodic(interval, calculateDays).asBroadcastStream();
 
@@ -119,7 +110,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      // backgroundColor: const Color(0xff0B0F0C),
+      backgroundColor: const Color(0xFF121312),
+      // Color(0xff0B0F0C),
       extendBody: true,
       body: CustomScrollView(
         shrinkWrap: true,
@@ -131,17 +123,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               width: 100,
               color: Colors.transparent,
             ),
-            title: NeumorphicText(
-              "DANCHE   NG'ANG'A",
-              style: const NeumorphicStyle(
-                intensity: 8,
-                depth: 1.2,
-                color: Colors.white12,
-              ),
-              textStyle: NeumorphicTextStyle(
-                fontSize: 28,
-              ),
-            ),
+            title: const Text("DANCHE NG'ANG'A"),
+            // AnimatedTextKit(
+            //   repeatForever: true,
+            //   animatedTexts: [
+            //     FlickerAnimatedText(
+            //       "DANCHE NG'ANG'A",
+            //       speed: const Duration(milliseconds: 3000),
+            //     ),
+            //     TyperAnimatedText("DANCHE NG'ANG'A")
+            //   ],
+            //   onTap: () {
+            //     print("Tap Event");
+            //   },
+            // ),
             backgroundColor: Colors.transparent.withOpacity(0.1),
             // expandedHeight: 200,
             // make the app bar reappear when scrolling up
@@ -165,19 +160,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Container(
                   //tooltip: 'Bio Data',
                   margin: const EdgeInsets.symmetric(horizontal: 17),
-                  // onPressed: () {
-                  //   print("onClick");
-                  // },
-                  // style: NeumorphicStyle(
-                  //   lightSource: LightSource.bottom,
-                  //   intensity: 0.5,
-                  //   depth: 3,
-                  //   shape: NeumorphicShape.concave,
-                  //   boxShape: NeumorphicBoxShape.roundRect(
-                  //       const BorderRadius.only(
-                  //           bottomRight: Radius.circular(20),
-                  //           topLeft: Radius.circular(20))),
-                  // ),
+
                   padding:
                       const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
                   child: ClayContainer(
@@ -186,8 +169,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     curveType: CurveType.concave,
                     color: baseColor,
                     //   color: const Color(0xff2F5552),
-                    customBorderRadius: BorderRadius.all(
-                      Radius.elliptical(5, 43),
+                    customBorderRadius: const BorderRadius.all(
+                      const Radius.elliptical(5, 43),
                     ),
                     child: Container(
                       height: screenHeight * 0.46,
@@ -211,9 +194,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                         //color: Colors.greenAccent,
                                         fontWeight: FontWeight.w400,
                                         shadows: [
-                                          Shadow(
+                                          const Shadow(
                                               // color: Colors.tealAccent,
-                                              offset: Offset(0.0, 3.0),
+                                              offset: const Offset(0.0, 3.0),
                                               blurRadius: 5.0),
                                         ]),
                                     child: AnimatedTextKit(
@@ -371,7 +354,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       'https://play.google.com/store/apps/details?id=com.ngash.bonyeza',
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 7, right: 7, top: 9),
+                  padding: const EdgeInsets.only(left: 7, right: 7, top: 9),
                   child: ClayContainer(
                     spread: 4,
                     depth: 24,
@@ -380,8 +363,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     color: baseColor,
                     curveType: CurveType.concave,
                     // color: const Color(0xff2F5552),
-                    customBorderRadius: BorderRadius.all(
-                      Radius.elliptical(3, 53),
+                    customBorderRadius: const BorderRadius.all(
+                      const Radius.elliptical(3, 53),
                     ),
                     // alignment: Alignment.center,
                     child: Column(
@@ -402,7 +385,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           animatedTexts: [
                             ColorizeAnimatedText(
                               'I have been using flutter for:',
-                              speed: Duration(milliseconds: 290),
+                              speed: const Duration(milliseconds: 290),
                               textStyle: GoogleFonts.ibmPlexMono(
                                 fontSize: 25,
                                 fontWeight: FontWeight.w500,
@@ -440,7 +423,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             builder: (BuildContext context,
                                 AsyncSnapshot<Duration> snapshot) {
                               var data = snapshot.data;
-                              if (data == null) return Text('<Loading..>');
+                              if (data == null)
+                                return Text(
+                                  '< Loading.. >',
+                                  style: bioTextStyle,
+                                );
                               var seconds = data.inSeconds;
                               final days = seconds ~/ Duration.secondsPerDay;
                               seconds -= days * Duration.secondsPerDay;
@@ -508,7 +495,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             depth: 9,
                             curveType: CurveType.convex,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
                                   'Let\'s be Internet Buddies',
@@ -548,7 +535,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // ClayContainer(
