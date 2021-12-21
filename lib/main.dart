@@ -1,8 +1,6 @@
-import 'dart:developer';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
-import 'package:clay_containers/widgets/clay_text.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +10,7 @@ import 'package:genialngash/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:timeline_tile/timeline_tile.dart' as timelineTile;
-import 'package:url_launcher/url_launcher.dart';
 
-//TODO internet buddies widget
 void main() {
   runApp(const MyApp());
 }
@@ -35,7 +31,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primaryColor:Color(0xffC4E9DB),
       // ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -170,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     color: baseColor,
                     //   color: const Color(0xff2F5552),
                     customBorderRadius: const BorderRadius.all(
-                      const Radius.elliptical(5, 43),
+                      Radius.elliptical(5, 43),
                     ),
                     child: Container(
                       height: screenHeight * 0.46,
@@ -196,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                         shadows: [
                                           const Shadow(
                                               // color: Colors.tealAccent,
-                                              offset: const Offset(0.0, 3.0),
+                                              offset: Offset(0.0, 3.0),
                                               blurRadius: 5.0),
                                         ]),
                                     child: AnimatedTextKit(
@@ -209,9 +205,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                         ),
                                       ],
                                       isRepeatingAnimation: false,
-                                      onTap: () {
-                                        print("Tap Event");
-                                      },
+                                      onTap: () {},
                                     ),
                                   ),
                                   AnimatedTextKit(
@@ -219,9 +213,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       TypewriterAnimatedText(
                                           'I craft AWESOME tech products '),
                                     ],
-                                    onTap: () {
-                                      print("Tap Event ");
-                                    },
+                                    onTap: () {},
                                   ),
                                   const Text('Get CREATIVE with FLUTTER'),
                                   const Text('Build Apps with FLUTTER'),
@@ -364,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     curveType: CurveType.concave,
                     // color: const Color(0xff2F5552),
                     customBorderRadius: const BorderRadius.all(
-                      const Radius.elliptical(3, 53),
+                      Radius.elliptical(3, 53),
                     ),
                     // alignment: Alignment.center,
                     child: Column(
@@ -401,9 +393,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           ],
                           // repeatForever: true,
                           //  isRepeatingAnimation: true,
-                          onTap: () {
-                            print("Tap Event");
-                          },
+                          onTap: () {},
                         ),
                         // textAnimateColorized(
                         //     text: 'I have been using flutter for :',
@@ -423,11 +413,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             builder: (BuildContext context,
                                 AsyncSnapshot<Duration> snapshot) {
                               var data = snapshot.data;
-                              if (data == null)
+                              if (data == null) {
                                 return Text(
                                   '< Loading.. >',
                                   style: bioTextStyle,
                                 );
+                              }
                               var seconds = data.inSeconds;
                               final days = seconds ~/ Duration.secondsPerDay;
                               seconds -= days * Duration.secondsPerDay;
@@ -439,15 +430,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
                               final List<String> tokens = [];
                               if (days != 0) {
-                                tokens.add('${days}');
+                                tokens.add('$days');
                               }
                               if (tokens.isNotEmpty || hours != 0) {
-                                tokens.add('${hours}');
+                                tokens.add('$hours');
                               }
                               if (tokens.isNotEmpty || minutes != 0) {
-                                tokens.add('${minutes}');
+                                tokens.add('$minutes');
                               }
-                              tokens.add('${seconds}');
+                              tokens.add('$seconds');
 
                               // tokens.join(':');
                               print(tokens);
