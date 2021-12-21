@@ -105,8 +105,8 @@ class ProjectsTile extends StatelessWidget {
           child: Tooltip(
             message: 'Click for full image',
             height: 17,
-            decoration: BoxDecoration(
-                color: const Color(0xff222928),
+            decoration: const BoxDecoration(
+                color: Color(0xff222928),
                 borderRadius: BorderRadius.all(Radius.elliptical(3, 13)),
                 boxShadow: [
                   // BoxShadow(
@@ -128,7 +128,7 @@ class ProjectsTile extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               margin: const EdgeInsets.only(top: 10, left: 7),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.elliptical(3, 13)),
+                borderRadius: const BorderRadius.all(Radius.elliptical(3, 13)),
                 backgroundBlendMode: BlendMode.softLight,
                 color: Colors.transparent.withOpacity(0.6),
                 image: DecorationImage(
@@ -147,7 +147,7 @@ class ProjectsTile extends StatelessWidget {
           indicator: InkWell(
             borderRadius: BorderRadius.circular(17),
             hoverColor: Colors.transparent.withOpacity(0.6),
-            splashColor: Color(0xff604C4C),
+            splashColor: const Color(0xff604C4C),
             onTap: () async {
               log('click');
               if (await canLaunch(url!)) {
