@@ -2,7 +2,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:clay_containers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget skillWidget({required String skill, required IconData icondata}) {
   return SizedBox(
@@ -80,13 +82,29 @@ class ExperienceDaysContainer extends StatelessWidget {
           children: [
             Text(
               duration,
-              style: GoogleFonts.ibmPlexMono(fontSize: 21,),
+              style: GoogleFonts.ibmPlexMono(
+                fontSize: 21,
+              ),
             ),
             Text(
               durationName,
-              style: GoogleFonts.ibmPlexMono(),
+              style: GoogleFonts.ibmPlexMono(color: Colors.white70),
             )
           ],
         ));
   }
+}
+
+Widget socialMediaWidget({required String url, required IconData iconData}) {
+  return IconButton(
+    onPressed: () async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'cant launch $url';
+      }
+    },
+    icon: FaIcon(iconData),
+    color: Color(0xffF0DD9E),
+  );
 }
