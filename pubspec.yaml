@@ -41,6 +41,7 @@ dependencies:
   clay_containers: ^0.3.2
   url_launcher: ^6.0.17
   flutter_animated_dialog: ^2.0.1
+  font_awesome_flutter: ^9.2.0
 
  
 
