@@ -21,7 +21,7 @@ Widget skillWidget({required String skill, required IconData icondata}) {
         ),
         Text(
           skill,
-          style: GoogleFonts.ibmPlexMono(),
+          style: GoogleFonts.ibmPlexMono(color: Colors.white),
           softWrap: true,
           maxLines: 2,
           //overflow: TextOverflow.fade,
@@ -84,6 +84,7 @@ class ExperienceDaysContainer extends StatelessWidget {
               duration,
               style: GoogleFonts.ibmPlexMono(
                 fontSize: 21,
+                color: Colors.white,
               ),
             ),
             Text(
